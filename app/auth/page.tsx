@@ -8,14 +8,14 @@ interface AuthProps {}
 
 const Auth: FunctionComponent<AuthProps> = () => {
   const searchParams = useSearchParams();
-  const token = searchParams.get("token") || "";
+  const userId = searchParams.get("userId") || "";
   const { replace } = useRouter();
 
-  const [value, setValue, removeValue] = useLocalStorage("token", token);
+  const [value, setValue, removeValue] = useLocalStorage("userId", userId);
   useEffect(() => {
-    setValue(token);
+    setValue(userId);
     replace("/dashboard");
-  }, [replace, setValue, token]);
+  }, [replace, setValue, userId]);
 
   return <div>Authenticating....</div>;
 };

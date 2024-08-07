@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { replace } = useRouter();
-  const token = useReadLocalStorage("token");
-  if (!token) {
+  const userId = useReadLocalStorage("userId");
+  if (!userId) {
     replace("/error");
   }
 
