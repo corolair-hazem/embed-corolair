@@ -1,23 +1,10 @@
-"use client";
-import { FunctionComponent, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { useLocalStorage } from "usehooks-ts";
-import { useRouter } from "next/navigation";
+import { FunctionComponent } from "react";
+import dynamic from "next/dynamic";
+const DynamicAuth = dynamic(() => import("@/components/auth"), { ssr: false });
+interface PageProps {}
 
-interface AuthProps {}
-
-const Auth: FunctionComponent<AuthProps> = () => {
-  const searchParams = useSearchParams();
-  const userId = searchParams.get("userId") || "";
-  const { replace } = useRouter();
-
-  const [value, setValue, removeValue] = useLocalStorage("userId", userId);
-  useEffect(() => {
-    setValue(userId);
-    replace("/dashboard");
-  }, [replace, setValue, userId]);
-
-  return <div>Authenticating....</div>;
+const Page: FunctionComponent<PageProps> = () => {
+  return <DynamicAuth />;
 };
 
-export default Auth;
+export default Page;
