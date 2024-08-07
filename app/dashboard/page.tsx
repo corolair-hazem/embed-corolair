@@ -6,23 +6,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { User } from "@clerk/clerk-sdk-node";
 import Image from "next/image";
+import { getListOfUserTutors } from "@/services/tutor-services";
 export default function Home() {
   const { replace } = useRouter();
   const userId = useReadLocalStorage("userId") as string;
   const [user, setUser] = useState<User | null>(null);
+  const [tutors, setTutors] = useState<any[]>([]);
 
   useEffect(() => {
     const getUser = async (userId: string) => {
       try {
         const { data } = await axios.get(`/api/user?id=${userId}`);
+        const tutors = await getListOfUserTutors({
+          userId,
+        });
         setUser(data.user);
+        setTutors(tutors);
       } catch (error) {
         console.error("Error:", error);
       }
     };
     if (!userId) return;
     getUser(userId);
-  }, [user, userId]);
+  }, [userId]);
 
   if (!userId) {
     replace("/error");
@@ -40,6 +46,11 @@ export default function Home() {
         src={user.imageUrl}
         alt="profile picture"
       />
+      <h2>Tutors</h2>
+      <ul>
+        {tutors.length > 0 &&
+          tutors.map((tutor) => <li key={tutor.id}>{tutor.name}</li>)}
+      </ul>
     </main>
   );
 }

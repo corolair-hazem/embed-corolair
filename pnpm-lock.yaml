@@ -22,28 +22,28 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: ^20.14.14
+    specifier: ^20
     version: 20.14.14
   '@types/react':
-    specifier: ^18.3.3
+    specifier: ^18
     version: 18.3.3
   '@types/react-dom':
-    specifier: ^18.3.0
+    specifier: ^18
     version: 18.3.0
   eslint:
-    specifier: ^8.57.0
+    specifier: ^8
     version: 8.57.0
   eslint-config-next:
     specifier: 14.2.5
     version: 14.2.5(eslint@8.57.0)(typescript@5.5.4)
   postcss:
-    specifier: ^8.4.41
-    version: 8.4.41
+    specifier: ^8
+    version: 8.4.31
   tailwindcss:
-    specifier: ^3.4.7
+    specifier: ^3.4.1
     version: 3.4.7
   typescript:
-    specifier: ^5.5.4
+    specifier: ^5
     version: 5.5.4
 
 packages:
@@ -2400,7 +2400,6 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.1
       source-map-js: 1.2.0
-    dev: false
 
   /postcss@8.4.41:
     resolution: {integrity: sha512-TesUflQ0WKZqAvg52PWL6kHgLKP6xB6heTOdoYM0Wt2UHyxNa4K25EZZMgKns3BH1RLVbZCREPpLY0rhnNoHVQ==}
